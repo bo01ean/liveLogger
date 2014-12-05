@@ -1,8 +1,13 @@
+// to run issue:  npm install -g connect serve-static socket.io http
 var app = require('http').createServer(handler),
 io = require('socket.io').listen(app, {log:false, origins:'*:*'});
 
-app.listen(8888);
 
+var connect = require('connect');
+var serveStatic = require('serve-static');
+
+connect().use(serveStatic(__dirname)).listen(8880);
+app.listen(8088);
 
 function handler (req, res) {
   res.writeHead(200, {'Access-Control-Allow-Origin' : '*'});
