@@ -1,0 +1,35 @@
+{
+  "name": "liveLogger",
+  "version": "1.0.0",
+  "description": "a language agnostic application logger over websockets built with node.js, angularjs and socket.io",
+  "main": "server.js",
+  "scripts": {
+    "test": "protractor conf.js",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/bo01ean/liveLogger.git"
+  },
+  "keywords": [
+    "application",
+    "logger",
+    "websockets",
+    "node.js",
+    "angularjs",
+    "socket.io"
+  ],
+  "author": "Nathan Trujillo",
+  "license": "BSD",
+  "bugs": {
+    "url": "https://github.com/bo01ean/liveLogger/issues"
+  },
+  "homepage": "https://github.com/bo01ean/liveLogger",
+  "dependencies": {
+    "connect": "^3.3.3",
+    "http": "0.0.0",
+    "protractor": "^1.5.0",
+    "serve-static": "^1.7.1",
+    "socket.io": "^1.2.1"
+  }
+}
