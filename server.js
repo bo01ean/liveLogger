@@ -1,8 +1,8 @@
     // liveLogger server
     // npm install -g connect serve-static socket.io http protractor
     // npm uninstall -g connect serve-static socket.io http protractor
-    var app = require('http').createServer(handler);
-    var io = require('socket.io').listen(app, {log:false, origins:'*:*'});
+    var frontend = require('http').createServer(handler);
+    var io = require('socket.io').listen(frontend, {log:false, origins:'*:*'});
 
     var connect = require('connect');
     var serveStatic = require('serve-static');
@@ -11,7 +11,7 @@
     // Load via http://localhost:8880
     connect().use(serveStatic(__dirname)).listen(8880);
     // Logger Listens Here on this address
-    app.listen(8088);
+    frontend.listen(8088);
 
     function handler (req, res) {
         res.writeHead(200, {'Access-Control-Allow-Origin' : '*'});
@@ -41,7 +41,5 @@
             console.log(socket.handshake.headers.host, 'log:' + data);
             //socket.emit('log', {host:"localhost", log: "Testing Front End", caller: "AngularJS"});
         });
-
-
 
     });
