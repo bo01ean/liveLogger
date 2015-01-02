@@ -1,6 +1,6 @@
 {
   "name": "liveLogger",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "a language agnostic application logger over websockets built with node.js, angularjs and socket.io",
   "main": "server.js",
   "scripts": {
