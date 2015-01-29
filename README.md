@@ -35,9 +35,9 @@ Send a message:
 
     use ElephantIO\Client as Elephant;
 
-    $liveLogger = new Elephant(
-    "http://localhost:8088", 'socket.io', 1, false, true, false
-            );
+        $liveLogger = new Elephant(
+            "http://localhost:8088", 'socket.io', 1, false, true, false
+        );
         // Where are we calling from
         $callers = debug_backtrace();
         // Which frame
