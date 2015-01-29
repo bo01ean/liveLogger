@@ -53,7 +53,7 @@ Send a message:
           'tag' => `hostname`,
         );
         
-        $elephant->emit("log", $data);
+        $liveLogger->emit("log", $data);
       
 ```
 
