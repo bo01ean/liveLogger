@@ -1,17 +1,19 @@
     // liveLogger server
     // npm install -g connect serve-static socket.io http protractor
     // npm uninstall -g connect serve-static socket.io http protractor
-    var frontend = require('http').createServer(handler);
-    var io = require('socket.io').listen(frontend, {log:false, origins:'*:*'});
+    var pubsub = require('http').createServer(handler);
+    var io = require('socket.io').listen(pubsub, {log:false, origins:'*:*'});
 
     var connect = require('connect');
     var serveStatic = require('serve-static');
 
     // Front End Runs Here
     // Load via http://localhost:8880
-    connect().use(serveStatic(__dirname)).listen(8880);
     // Logger Listens Here on this address
-    frontend.listen(8088);
+    connect().use(serveStatic(__dirname)).listen(8880);
+    console.log("Started Frontend on port 8880");
+    console.log("Connect your WebSocket logging facility to port 8088");
+    pubsub.listen(8088);
 
     function handler (req, res) {
         res.writeHead(200, {'Access-Control-Allow-Origin' : '*'});
@@ -39,7 +41,7 @@
 
         socket.on('log', function (data) {
             console.log(socket.handshake.headers.host, 'log:' + data);
-            //socket.emit('log', {host:"localhost", log: "Testing Front End", caller: "AngularJS"});
+            socket.broadcast.emit('log', {host:"localhost", log:data, caller: "AngularJS"});
         });
 
     });
